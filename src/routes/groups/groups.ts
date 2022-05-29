@@ -2,6 +2,7 @@ import express, {Request, Response} from "express";
 import {getUserGroups} from "./getUserGroups";
 import {addUserToGroup} from "./addUserToGroup";
 import {createGroupByUser} from "./createGroupByUser";
+import {getUserLeaderboard} from "./getUserLeaderboard";
 const groupsRouter = express.Router();
 
 groupsRouter.post("/", async function (req : Request, res : Response) {
@@ -18,5 +19,10 @@ groupsRouter.post("/createGroup", async function(req :Request, res: Response) {
     let result = await createGroupByUser(req.body.uid, req.body.groupName);
     res.send(JSON.stringify(result));
 })
+
+groupsRouter.post("/getUserLeaderboard", async function (req : Request, res : Response) {
+   let result = await getUserLeaderboard(req.body.uid);
+   res.send(JSON.stringify(result));
+});
 
 export default groupsRouter;
