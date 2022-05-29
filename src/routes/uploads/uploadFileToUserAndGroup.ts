@@ -33,7 +33,7 @@ export async function uploadFileToUserAndGroup(uid: number, groupId: number, fil
         [imageUrl, uid, groupId]);
 
     let scoreResponse = await getUserScore(uid);
-    let score = (Math.floor(Math.random()*100 )+ 1) + scoreResponse.data;
+    let score = (Math.floor(Math.random())+ 1) + scoreResponse.data;
 
     let updateScore = await updateUserScore(uid, score);
 
