@@ -3,6 +3,7 @@ import {uploadFileToUserAndGroup} from "./uploadFileToUserAndGroup";
 import {getUploadedFileByGroup} from "./getUploadedFileByGroup";
 import {getUploadedFileByUser} from "./getUploadedFileByUser";
 import {uploadImageFromString} from "./uploadImageFromString";
+import {getAllUploads} from "./getAllUploads";
 const uploadsRouter = express.Router();
 
 uploadsRouter.post("/", async function(req: Request, res: Response) {
@@ -19,6 +20,11 @@ uploadsRouter.post("/uploadImageString", async function(req: Request, res: Respo
 
 uploadsRouter.post("/getGroupUploads", async function(req: Request, res: Response) {
     let result = await getUploadedFileByGroup(req.body.groupId, req.body.uid);
+    res.send(JSON.stringify(result));
+})
+
+uploadsRouter.post("/getAllUploads", async function (req: Request, res: Response) {
+    let result = await getAllUploads();
     res.send(JSON.stringify(result));
 })
 
