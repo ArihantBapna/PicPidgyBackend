@@ -1,0 +1,6 @@
+dist/
+.idea/
+uplad-config/apikey.json
+.env
+package-lock.json
+node_modules
